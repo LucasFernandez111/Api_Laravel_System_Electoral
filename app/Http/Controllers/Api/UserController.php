@@ -16,7 +16,8 @@ class UserController extends Controller
                 "name" => ["required"],
                 "email" => ["required", "email", "unique:users"],
                 "password" => ["required"],
-                "rol" => ["required"]
+                "rol" => ["required"],
+                "partido" => ["required"]
             ]
 
         );
@@ -26,6 +27,7 @@ class UserController extends Controller
         $user->email = $request->email;
         $user->password = Hash::make($request->password);
         $user->rol = $request->rol;
+        $user->partido = $request->partido;
         $user->save();
 
         return response()->json([

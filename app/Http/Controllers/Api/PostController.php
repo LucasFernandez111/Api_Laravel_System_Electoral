@@ -28,10 +28,22 @@ class PostController extends Controller
 
         return response()->json(['status' => 'OK', 'message' => 'Post Created successful']);
     }
-    public function listPost($id)
+    public function listPost()
     {
+        $user_id = auth()->user()->id;
+        $posts = Post::where("user_id", $user_id)->get();
+
+        response()->json(['status' => 'OK', 'message' => 'Post Listed successful', 'data' => $posts]);
     }
 
+
+    public function listAllPost()
+    {
+
+        $allPost = Post::all();
+
+        return response()->json(['status' => 'OK', 'message' => 'Post Listed All successful', 'data' => $allPost]);
+    }
     public function updatePost(Request $request, $id)
     {
     }
