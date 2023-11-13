@@ -15,7 +15,8 @@ class CreateVotacionTable extends Migration
     {
         Schema::create('votacion', function (Blueprint $table) {
             $table->id();
-            $table->timestamps();
+            $table->string('partido');
+
         });
     }
 

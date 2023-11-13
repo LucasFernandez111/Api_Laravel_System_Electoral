@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\Api\PostController;
+
+use App\Http\Controllers\Api\VotacionController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\UserController;
 
@@ -8,6 +10,8 @@ use App\Http\Controllers\Api\UserController;
 Route::post('register', [UserController::class, 'register']);
 Route::post('login', [UserController::class, 'login']);
 Route::get('list-all-post', [PostController::class, 'listAllPost']);
+Route::get('list-voto', [VotacionController::class, 'listVoto']);
+Route::post('create-voto', [VotacionController::class, 'createVoto']);
 
 Route::group(['middleware' => ['auth:sanctum']], function () {
 
@@ -20,5 +24,6 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
     Route::get('list-post', [PostController::class, 'listPost']);
     Route::put('update-post/{id}', [PostController::class, 'updatePost']);
     Route::delete('delete-post/{id}', [PostController::class, 'deletePost']);
+
 });
 
