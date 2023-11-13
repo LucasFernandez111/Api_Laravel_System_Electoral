@@ -11,7 +11,7 @@ Route::post('register', [UserController::class, 'register']);
 Route::post('login', [UserController::class, 'login']);
 Route::get('list-all-post', [PostController::class, 'listAllPost']);
 Route::get('list-voto', [VotacionController::class, 'listVoto']);
-Route::post('create-voto', [VotacionController::class, 'createVoto']);
+
 
 Route::group(['middleware' => ['auth:sanctum']], function () {
 
@@ -20,6 +20,7 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
     Route::get('logout', [UserController::class, 'logOut']);
 
     //Routes of Post
+    Route::post('create-voto', [VotacionController::class, 'createVoto']);
     Route::post('create-post', [PostController::class, 'createPost']);
     Route::get('list-post', [PostController::class, 'listPost']);
     Route::put('update-post/{id}', [PostController::class, 'updatePost']);

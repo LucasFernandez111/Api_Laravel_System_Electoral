@@ -20,7 +20,7 @@ class CreateUsersTable extends Migration
             $table->string('password');
             $table->string('rol');
             $table->string('partido');
-
+            $table->timestamps();
         });
     }
 

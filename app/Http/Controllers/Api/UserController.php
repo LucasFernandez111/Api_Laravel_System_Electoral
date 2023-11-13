@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Models\Votacion;
 use Illuminate\Http\Request;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
@@ -77,11 +78,39 @@ class UserController extends Controller
     public function userProfile()
     {
 
+        $user = auth()->user();
+
+        $voto = Votacion::where('user_id', $user->id)->get();
+
+
+        if (count($voto) > 0) {
+            return response()->json([
+
+                'status' => 'OK',
+                'data' => [
+                    'name' => $user->name,
+                    'email' => $user->email,
+                    'rol' => $user->rol,
+                    'partido' => $user->partido,
+                    'voto' => 1
+                ]
+            ]);
+
+
+        }
+
         return response()->json([
-            "status" => 0,
-            "message" => "User Authenticated",
-            "data" => auth()->user()
+            'status' => 'OK',
+
+            'data' => [
+                'name' => $user->name,
+                'email' => $user->email,
+                'rol' => $user->rol,
+                'partido' => $user->partido,
+            ]
         ]);
+
+
     }
 
     public function logOut()

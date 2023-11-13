@@ -13,17 +13,33 @@ class VotacionController extends Controller
     {
 
         $request->validate([
+
             'partido' => 'required',
         ]);
 
+        $user = auth()->user()->id;
+
+
+        $votoExist = Votacion::where('user_id', $user)->exists();
+
+        if ($votoExist > 0) {
+            return response()->json([
+                'status' => 'OK',
+                'error' => true,
+                'message' => 'YOU HAVE ALREADY VOTED!',
+            ]);
+        }
 
         $votacion = new Votacion();
 
-
+        $votacion->user_id = $user;
         $votacion->partido = $request->partido;
 
 
         $votacion->save();
+
+
+
 
         return response()->json([
             'status' => 'OK',
@@ -52,8 +68,8 @@ class VotacionController extends Controller
             'data' => [
 
                 'total' => $totalDatos,
-                'Libertad' => $votoLla,
-                'UnionxPatria' => $votoUxp,
+                'LLA' => $votoLla,
+                'UPP' => $votoUxp,
             ]
         ]);
 

@@ -15,7 +15,9 @@ class CreateVotacionTable extends Migration
     {
         Schema::create('votacion', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('user_id')->constrained(); // Relación con la tabla 'users'
             $table->string('partido');
+            $table->boolean('voto')->default(1); // Nueva columna 'voto'
 
         });
     }
