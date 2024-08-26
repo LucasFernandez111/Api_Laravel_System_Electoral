@@ -1,4 +1,4 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://postimg.cc/jCZ1Nxv0" width="400"></a></p>
+<p align="center"><img src="https://postimg.cc/jCZ1Nxv0" width="400"></a></p>
 
 # Electoral Voting System API
 
