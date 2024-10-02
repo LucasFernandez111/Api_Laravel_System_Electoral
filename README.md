@@ -1,4 +1,4 @@
-<p align="center"><img src="https://i.postimg.cc/rFk2Bzrm/votarg-png-1.png" width="400"></a></p>
+<p align="center"><img src="https://www.svgrepo.com/show/353985/laravel.svg" width="400"></a></p>
 
 # Electoral Voting System API
 
